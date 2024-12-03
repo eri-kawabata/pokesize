@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeSize</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="pokedex">
+        <!-- 入力フォーム -->
+<form id="pokemonForm" class="form">
+    <label for="region">地域を選択:</label>
+    <select id="region">
+        <option value="kanto">カントー</option>
+        <option value="johto">ジョウト</option>
+        <option value="hoenn">ホウエン</option>
+        <option value="sinnoh">シンオウ</option>
+        <option value="unova">イッシュ</option>
+        <option value="kalos">カロス</option>
+        <option value="alola">アローラ</option>
+        <option value="galar">ガラル</option>
+    </select>
+    <br>
+    <label for="height">身長 (cm):</label>
+    <input type="number" id="height" name="height" required>
+    <br>
+    <label for="weight">体重 (kg):</label>
+    <input type="number" id="weight" name="weight" required>
+    <br>
+    <button type="submit" class="button">検索</button>
+</form>
+
+
+        <!-- 結果表示エリア -->
+        <div id="result" class="screen"></div>
+    </div>
+
+    <!-- モーダル -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-name"></h2>
+        <div id="modal-images">
+            <img id="modal-image" src="" alt="ポケモン正面画像" />
+            <img id="modal-back-image" src="" alt="ポケモン後ろ画像" style="display: none;" />
+            <img id="modal-front-shiny" src="" alt="ポケモン色違い正面画像" style="display: none;" />
+            <img id="modal-back-shiny" src="" alt="ポケモン色違い後ろ画像" style="display: none;" />
+        </div>
+        <p id="modal-description"></p>
+        <div id="modal-stats">
+            <p id="modal-height"></p>
+            <p id="modal-weight"></p>
+            <p id="modal-types"></p>
+        </div>
+    </div>
+</div>
+
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
