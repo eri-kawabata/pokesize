@@ -18,6 +18,13 @@ const gameArea = document.getElementById("game-area");
 const modeSelection = document.getElementById("mode-selection");
 const rankingArea = document.getElementById("ranking-area");
 const rankingList = document.getElementById("ranking-list");
+const replayButton = document.createElement("button"); // リプレイボタンを生成
+
+// リプレイボタンの設定
+replayButton.id = "replay-button";
+replayButton.innerText = "もう一度プレイ";
+replayButton.classList.add("hidden");
+rankingArea.appendChild(replayButton); // ランキングエリアに追加
 
 // ハイスコアの表示
 highScoreDisplay.innerText = highScore;
@@ -26,6 +33,13 @@ highScoreDisplay.innerText = highScore;
 modeSelection.addEventListener("change", (e) => {
     mode = e.target.value;
 });
+
+// ひらがなをカタカナに変換する関数
+function toKatakana(text) {
+    return text.normalize("NFKC").replace(/[\u3041-\u3096]/g, (ch) =>
+        String.fromCharCode(ch.charCodeAt(0) + 0x60)
+    );
+}
 
 // ランダムなポケモンをAPIから取得
 async function fetchPokemon() {
@@ -97,6 +111,7 @@ function endGame() {
     displayRanking();
     gameArea.classList.add("hidden");
     rankingArea.classList.remove("hidden");
+    replayButton.classList.remove("hidden"); // リプレイボタンを表示
 }
 
 // タイマーを開始
@@ -121,6 +136,7 @@ function startGame() {
     timerDisplay.innerText = timeRemaining;
     gameArea.classList.remove("hidden");
     rankingArea.classList.add("hidden");
+    replayButton.classList.add("hidden"); // リプレイボタンを非表示
     showNextPokemon();
     startTimer();
 }
@@ -134,13 +150,25 @@ startButton.addEventListener("click", () => {
 
 // タイピング入力の処理
 typingInput.addEventListener("input", function () {
-    if (typingInput.value.toLowerCase() === currentPokemon.toLowerCase()) {
+    let userInput = typingInput.value.trim();
+    let correctAnswer = currentPokemon.trim();
+
+    if (mode === "japanese") {
+        // ひらがなをカタカナに変換して比較
+        userInput = toKatakana(userInput);
+        correctAnswer = toKatakana(correctAnswer);
+    }
+
+    if (userInput === correctAnswer) {
         score++;
         scoreDisplay.innerText = score;
         typingInput.value = "";
         showNextPokemon();
     }
 });
+
+// リプレイボタンのクリックイベント
+replayButton.addEventListener("click", startGame);
 
 // 初回ランキング表示
 displayRanking();

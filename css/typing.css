@@ -164,6 +164,24 @@ footer {
     text-align: center;
 }
 
+#replay-button {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+#replay-button:hover {
+    background: linear-gradient(135deg, #f7b731, #d35400);
+    transform: scale(1.05);
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     h1 {
