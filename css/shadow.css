@@ -1,0 +1,196 @@
+/* 全体レイアウト */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ff3b3b;
+    /* モンスターボールの赤 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+#app {
+    background-color: #ffffff;
+    /* モンスターボールの白 */
+    border: 5px solid #000000;
+    /* モンスターボールの黒いライン */
+    border-radius: 15px;
+    width: 600px;
+    min-height: 500px;
+    /* 最小高さを設定 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* 上詰め */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    overflow: visible;
+}
+
+/* コントロールエリア */
+#controls {
+    display: flex;
+    justify-content: center;
+    /* 中央揃え */
+    align-items: center;
+    /* 縦方向中央揃え */
+    gap: 40px;
+    /* 地方と言語選択の間のスペース */
+    margin-bottom: 20px;
+}
+
+/* 各選択グループ */
+.control-group {
+    display: flex;
+    flex-direction: column;
+    /* ラベルとセレクトボックスを縦に並べる */
+    align-items: center;
+    /* 中央揃え */
+    text-align: center;
+}
+
+.control-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 5px;
+    /* ラベルとセレクトボックスの間隔 */
+}
+
+.control-group select {
+    padding: 8px;
+    border: 2px solid #CCCCCC;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.control-group select:focus {
+    border-color: #FF0000;
+    /* モンスターボールの赤 */
+}
+
+/* 各選択エリアのラッパー */
+.control-group {
+    display: flex;
+    align-items: center;
+    /* ラベルとセレクトボックスを中央揃え */
+    gap: 10px;
+    /* ラベルとセレクトボックスの間隔 */
+}
+
+/* タイマー */
+#timer-container {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+/* ポケモン画像エリア */
+#image-container {
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 3px solid #000000;
+    border-radius: 50%;
+    /* モンスターボール風の円形 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#pokemon-image {
+    max-width: 100%;
+    max-height: 100%;
+    filter: contrast(0) grayscale(1);
+    /* シルエット */
+}
+
+/* 選択肢 */
+#choices-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.choice-button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.choice-button:hover {
+    background: linear-gradient(135deg, #4aa3e6, #2a85c9);
+    transform: scale(1.05);
+}
+
+/* 時間切れメッセージ */
+#result {
+    font-size: 24px;
+    /* 視認性の高いサイズ */
+    font-weight: bold;
+    color: red;
+    /* 時間切れを視覚的に強調 */
+    margin-top: 20px;
+    text-align: center;
+    /* 中央揃え */
+    animation: fadeIn 0.5s ease;
+    /* 視覚的なエフェクト */
+}
+
+/* アニメーション（オプション） */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* スコア表示 */
+#score {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #000;
+}
+
+/* 次の問題ボタン */
+#next-button {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#next-button:hover {
+    background: linear-gradient(135deg, #58d68d, #2eae60);
+    transform: scale(1.05);
+}
