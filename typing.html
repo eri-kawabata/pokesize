@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポケモンタイピングチャレンジ</title>
+    <link rel="stylesheet" href="./css/typing.css">
+</head>
+
+<body>
+    <h1>ポケモンタイピングチャレンジ</h1>
+    <div class="container">
+        <div id="mode-selection">
+            <label>
+                <input type="radio" name="mode" value="english" checked> 英語モード
+            </label>
+            <label>
+                <input type="radio" name="mode" value="japanese"> 日本語モード
+            </label>
+        </div>
+        <button id="start-button">スタート</button>
+        <div id="game-area" class="hidden">
+            <div class="pokemon">
+                <img id="pokemon-image" src="" alt="ポケモン" class="pokemon-image">
+                <div id="pokemon-display">???</div>
+            </div>
+            <input type="text" id="typing-input" placeholder="ここに入力" autofocus>
+            <div class="score">スコア: <span id="score">0</span></div>
+            <div class="timer">残り時間: <span id="timer">60</span>秒</div>
+            <div class="high-score">ハイスコア: <span id="high-score">0</span></div>
+        </div>
+        <div id="ranking-area" class="hidden">
+            <h2>ランキング</h2>
+            <ol id="ranking-list"></ol>
+        </div>
+    </div>
+    <script src="./js/typing.js"></script>
+</body>
+
+</html>
