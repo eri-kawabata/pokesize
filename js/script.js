@@ -1,3 +1,8 @@
+function toggleMenu() {
+    const sideMenu = document.getElementById("sideMenu");
+    sideMenu.classList.toggle("open"); // メニューの開閉を切り替え
+}
+
 const form = document.getElementById("pokemonForm");
 const resultDiv = document.getElementById("result");
 const modal = document.getElementById("modal");

@@ -4,11 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PokeSize</title>
+    <title>ポケサイズ</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
+    <!-- メニューボタン -->
+    <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+
+    <!-- サイドメニュー -->
+    <!-- バツ印は消している -->
+    <div class="side-menu" id="sideMenu">
+        <button class="close-btn" onclick="toggleMenu()"></button>
+        <a href="./index.html" class="menu-item">
+            <i class="fas fa-cog"></i> ポケサイズ</a>
+        <a href="./data.html" class="menu-item">
+            <i class="fas fa-calendar-alt"></i> 記録</a>
+        <a href="./shadow.html" class="menu-item">
+            <i class="fas fa-user"></i> シルエットクイズ</a>
+        <a href="./typing.html" class="menu-item">
+            <i class="fas fa-sign-in-alt"></i>タイピングチャレンジ</a>
+    </div>
+
     <div class="pokedex">
         <!-- 入力フォーム -->
 <form id="pokemonForm" class="form">

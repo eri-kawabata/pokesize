@@ -1,64 +1,198 @@
+/* 全体レイアウト */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #ff3b3b;
+    /* モンスターボールの赤 */
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
-}
-
-h1 {
-    background-color: #007bff;
-    color: white;
-    margin: 0;
-    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
 }
 
 .container {
-    margin: 30px auto;
+    background-color: #ffffff;
+    /* モンスターボールの白 */
+    border: 5px solid #000000;
+    /* モンスターボールの黒いライン */
+    border-radius: 15px;
     width: 90%;
     max-width: 600px;
-    text-align: center;
-    background: white;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* スペースを均等に分ける */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* モード選択 */
+#mode-selection {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#mode-selection label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* ゲームエリア */
 .hidden {
     display: none;
 }
 
 .pokemon {
-    margin: 20px 0;
+    margin: 10px auto;
+    text-align: center;
 }
 
 .pokemon-image {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
+    margin: 20px auto;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border: 3px solid #000000;
+        border-radius: 50%;
+        /* モンスターボール風の円形 */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 #pokemon-display {
     font-size: 24px;
     font-weight: bold;
     margin: 10px 0;
+    color: #333;
 }
 
+/* 入力エリア */
 input {
-    width: 80%;
-    padding: 10px;
+    width: 90%;
+    padding: 12px;
     font-size: 18px;
-    border: 2px solid #007bff;
+    border: 2px solid #000000;
     border-radius: 4px;
-    margin-top: 10px;
+    margin-top: 15px;
+    text-align: center;
+    transition: border-color 0.3s ease;
 }
 
+input:focus {
+    border-color: #ff3b3b;
+    outline: none;
+}
+
+/* スコア表示 */
 .score,
 .timer,
 .high-score {
     font-size: 18px;
     margin: 10px 0;
+    color: #000000;
+    font-weight: bold;
+}
+
+#timer {
+    color: #ff3b3b;
+}
+
+/* ボタン */
+button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin: 10px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #4aa3e6, #2a85c9);
+    transform: scale(1.05);
+}
+
+/* ランキングエリア */
+#ranking-area {
+    width: 100%;
+    text-align: center;
 }
 
 #ranking-area h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
     margin-top: 20px;
+}
+
+ol {
+    padding: 0;
+    list-style-type: none;
+    margin: 0 auto;
+    width: 90%;
+}
+
+ol li {
+    font-size: 18px;
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin: 5px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* フッターのメッセージ */
+footer {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #000000;
+    text-align: center;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .pokemon-image {
+        width: 140px;
+        height: 140px;
+    }
+
+    input {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .score,
+    .timer,
+    .high-score {
+        font-size: 16px;
+    }
+
+    ol li {
+        font-size: 16px;
+        padding: 8px;
+    }
 }

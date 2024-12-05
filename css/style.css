@@ -1,3 +1,101 @@
+/* メニューボタン */
+.menu-btn {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #ffffffbe;
+    color: rgb(80, 165, 255);
+    border: none;
+    cursor: pointer;
+    /* マウスを乗せると指の形になる */
+    position: fixed;
+    /* ボタンを画面上の決まった位置に固定 */
+    top: 10px;
+    /* 画面上から10pxの位置に配置 */
+    left: 10px;
+    /* 画面左から10pxの位置に配置 */
+    z-index: 1000;
+    /* レイヤーの順番を最前面に */
+}
+
+/* メニューボタンのホバー時のスタイル */
+.menu-btn:hover {
+    background-color: #fffefe;
+    /* 背景色をグレーに変更 */
+    color: rgb(255, 155, 155);
+    /* テキスト色は変更せずそのまま */
+}
+
+/* サイドメニューのスタイル */
+.side-menu {
+    position: fixed;
+    /* サイドメニューの位置を画面に固定 */
+    left: -230px;
+    /* 初期状態で画面の外に隠れるようにする */
+    top: 0;
+    /* 上端に配置 */
+    width: 230px;
+    /* メニューの幅を230pxに設定 */
+    height: 100%;
+    /* 高さを画面全体の高さに設定 */
+    background-color: #333333d0;
+    color: white;
+    overflow-y: auto;
+    /* メニューが長くなった時にスクロール可能にする */
+    transition: left 0.3s ease;
+    /* メニューを表示する際にスライドするアニメーション */
+    z-index: 999;
+    /* メニューを他の要素の上に表示 */
+    padding-top: 50px;
+    /* メニューの上端に50pxの余白 */
+}
+
+/* サイドメニューが表示されるとき */
+.side-menu.open {
+    left: 0;
+    /* 左端にスライドインさせる */
+}
+
+/* メニューを閉じるボタン */
+.close-btn {
+    font-size: 20px;
+    color: white;
+    background: none;
+    /* 背景色をなくす */
+    border: none;
+    /* ボタンの枠線を消す */
+    cursor: pointer;
+    /* マウスを乗せると指の形になる */
+    margin-left: 10px;
+    display: block;
+    /* ブロック要素として表示 */
+}
+
+/* メニュー項目のスタイル */
+.menu-item {
+    display: flex;
+    /* アイコンとテキストを横並びにする */
+    align-items: center;
+    /* アイコンとテキストを縦方向に中央揃え */
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    /* リンクの下線をなくす */
+    font-size: 18px;
+    transition: background 0.3s;
+    /* 背景色が0.3秒で変わるようにする */
+}
+
+/* メニュー項目のホバー時のスタイル */
+.menu-item:hover {
+    background-color: #555;
+}
+
+/* メニュー項目内のアイコンのスタイル */
+.menu-item i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
 /* 全体レイアウト */
 body {
     font-family: 'Arial', sans-serif;

@@ -33,8 +33,21 @@ async function fetchPokemon() {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
     if (response.ok) {
         const data = await response.json();
-        const pokemonName = mode === "english" ? data.name : data.species.name; // 英語名 or 日本語名
         const pokemonImageURL = data.sprites.front_default; // 表示画像
+        
+        if (mode === "japanese") {
+            // 日本語名を取得するために追加リクエスト
+            const speciesResponse = await fetch(data.species.url);
+            if (speciesResponse.ok) {
+                const speciesData = await speciesResponse.json();
+                const japaneseNameEntry = speciesData.names.find(name => name.language.name === "ja");
+                const pokemonName = japaneseNameEntry ? japaneseNameEntry.name : "???";
+                return { name: pokemonName, image: pokemonImageURL };
+            }
+        }
+        
+        // 英語モードまたは日本語名取得失敗時
+        const pokemonName = data.name;
         return { name: pokemonName, image: pokemonImageURL };
     } else {
         console.error("Failed to fetch Pokémon data");
