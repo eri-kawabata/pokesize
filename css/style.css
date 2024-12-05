@@ -2,51 +2,37 @@
 .menu-btn {
     font-size: 20px;
     padding: 10px 20px;
-    background-color: #ffffffbe;
+    background-color: rgba(255, 255, 255, 0.9);
     color: rgb(80, 165, 255);
     border: none;
     cursor: pointer;
-    /* マウスを乗せると指の形になる */
     position: fixed;
-    /* ボタンを画面上の決まった位置に固定 */
     top: 10px;
-    /* 画面上から10pxの位置に配置 */
     left: 10px;
-    /* 画面左から10pxの位置に配置 */
     z-index: 1000;
-    /* レイヤーの順番を最前面に */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* メニューボタンのホバー時のスタイル */
 .menu-btn:hover {
-    background-color: #fffefe;
-    /* 背景色をグレーに変更 */
-    color: rgb(255, 155, 155);
-    /* テキスト色は変更せずそのまま */
+    background-color: #ffffff;
+    color: rgb(255, 80, 80);
 }
 
-/* サイドメニューのスタイル */
+/* サイドメニュー */
 .side-menu {
     position: fixed;
-    /* サイドメニューの位置を画面に固定 */
     left: -230px;
-    /* 初期状態で画面の外に隠れるようにする */
     top: 0;
-    /* 上端に配置 */
     width: 230px;
-    /* メニューの幅を230pxに設定 */
     height: 100%;
-    /* 高さを画面全体の高さに設定 */
-    background-color: #333333d0;
+    background-color: rgba(51, 51, 51, 0.8);
     color: white;
     overflow-y: auto;
-    /* メニューが長くなった時にスクロール可能にする */
     transition: left 0.3s ease;
-    /* メニューを表示する際にスライドするアニメーション */
     z-index: 999;
-    /* メニューを他の要素の上に表示 */
     padding-top: 50px;
-    /* メニューの上端に50pxの余白 */
+    border-right: 2px solid rgba(0, 0, 0, 0.5);
 }
 
 /* サイドメニューが表示されるとき */
@@ -127,6 +113,27 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
     overflow: visible;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    font-size: 1.1em;
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* フォーム */
