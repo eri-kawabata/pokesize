@@ -1,6 +1,6 @@
-const API_URL = "https://pokeapi.co/api/v2/pokemon/";
+const API_URL = "https://pokeapi.co/api/v2/";
 const regions = {
-  all: { min: 1, max: 1010 }, // すべてのポケモン
+  all: { min: 1, max: 1010 },
   kanto: { min: 1, max: 151 },
   johto: { min: 152, max: 251 },
   hoenn: { min: 252, max: 386 },
@@ -29,20 +29,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fetchPokemonData = async (id) => {
     try {
-      const response = await fetch(`${API_URL}${id}`);
+      const response = await fetch(`${API_URL}pokemon/${id}`);
       if (!response.ok) {
         throw new Error(`Failed to fetch Pokemon data: ${response.status}`);
       }
       const data = await response.json();
-      const language = languageSelect.value;
-      const localizedName =
-        data.names?.find((name) => name.language.name === language)?.name ||
-        data.name;
+
+      if (!data.species || !data.species.url) {
+        throw new Error("Species URL is missing for the selected Pokémon.");
+      }
+
+      const speciesResponse = await fetch(data.species.url);
+      if (!speciesResponse.ok) {
+        throw new Error(`Failed to fetch Pokemon species data: ${speciesResponse.status}`);
+      }
+
+      const speciesData = await speciesResponse.json();
+      const language = languageSelect.value || "en";
+      const localizedName = speciesData.names.find(
+        (name) => name.language.name === language
+      )?.name || data.name;
 
       return {
         name: data.name,
         localizedName,
         sprite: data.sprites.front_default,
+        types: data.types.map((type) => type.type.name),
       };
     } catch (error) {
       console.error("Error fetching Pokemon data:", error);
@@ -154,13 +166,13 @@ document.addEventListener("DOMContentLoaded", () => {
       endGame();
       return;
     }
-    setTimeout(startNewQuiz, 2000); // 次の問題を2秒後に開始
+    setTimeout(startNewQuiz, 2000);
   };
 
   const endGame = () => {
     resultDisplay.textContent = `ゲーム終了！ スコア: ${score}`;
     resultDisplay.style.color = "blue";
-    nextButton.style.display = "none"; // 「次の問題」ボタンを非表示
+    nextButton.style.display = "none";
   };
 
   const startNewQuiz = async () => {
@@ -177,6 +189,5 @@ document.addEventListener("DOMContentLoaded", () => {
   regionSelect.addEventListener("change", startNewQuiz);
   languageSelect.addEventListener("change", startNewQuiz);
 
-  startNewQuiz(); // 初期化
+  startNewQuiz();
 });
-
