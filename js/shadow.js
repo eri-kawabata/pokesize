@@ -16,6 +16,7 @@ let score = 0;
 let currentQuestion = 0;
 let timerInterval = null;
 let timeLeft = 10;
+let isPaused = false; // 一時停止のフラグ
 
 document.addEventListener("DOMContentLoaded", () => {
   const pokemonImage = document.getElementById("pokemon-image");
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const scoreDisplay = document.getElementById("score");
   const progressDisplay = document.getElementById("progress");
   const timerDisplay = document.getElementById("timer");
-  const nextButton = document.getElementById("next-button");
+  const pauseButton = document.getElementById("pause-button");
   const endScreen = document.getElementById("end-screen");
   const finalScore = document.getElementById("final-score");
   const replayButton = document.getElementById("replay-button");
@@ -38,10 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error(`Failed to fetch Pokemon data: ${response.status}`);
       }
       const data = await response.json();
-
-      if (!data.species || !data.species.url) {
-        throw new Error("Species URL is missing for the selected Pokémon.");
-      }
 
       const speciesResponse = await fetch(data.species.url);
       if (!speciesResponse.ok) {
@@ -123,14 +120,21 @@ document.addEventListener("DOMContentLoaded", () => {
     timerDisplay.textContent = timeLeft;
 
     timerInterval = setInterval(() => {
-      timeLeft -= 1;
-      timerDisplay.textContent = timeLeft;
+      if (!isPaused) {
+        timeLeft -= 1;
+        timerDisplay.textContent = timeLeft;
 
-      if (timeLeft === 0) {
-        clearInterval(timerInterval);
-        handleTimeout();
+        if (timeLeft === 0) {
+          clearInterval(timerInterval);
+          handleTimeout();
+        }
       }
     }, 1000);
+  };
+
+  const togglePause = () => {
+    isPaused = !isPaused;
+    pauseButton.textContent = isPaused ? "再開" : "一時停止";
   };
 
   const handleTimeout = () => {
@@ -182,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const endGame = () => {
     resultDisplay.textContent = "ゲーム終了！";
     resultDisplay.style.display = "none";
-    nextButton.style.display = "none";
+    pauseButton.style.display = "none";
     endScreen.style.display = "block";
 
     finalScore.textContent = `あなたのスコア: ${score}`;
@@ -192,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
     score = 0;
     currentQuestion = 0;
     resultDisplay.style.display = "block";
-    nextButton.style.display = "block";
+    pauseButton.style.display = "block";
     endScreen.style.display = "none";
     scoreDisplay.textContent = "スコア: 0";
     updateProgress();
@@ -210,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   replayButton.addEventListener("click", resetGame);
-  nextButton.addEventListener("click", startNewQuiz);
+  pauseButton.addEventListener("click", togglePause);
   regionSelect.addEventListener("change", startNewQuiz);
   languageSelect.addEventListener("change", startNewQuiz);
 

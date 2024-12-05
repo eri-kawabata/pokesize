@@ -177,9 +177,8 @@ body {
     color: #000;
 }
 
-/* 次の問題ボタン */
-#next-button {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
+#pause-button {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
     color: #fff;
     font-size: 16px;
     border: none;
@@ -188,10 +187,11 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-top: 20px;
 }
 
-#next-button:hover {
-    background: linear-gradient(135deg, #58d68d, #2eae60);
+#pause-button:hover {
+    background: linear-gradient(135deg, #f7b731, #d35400);
     transform: scale(1.05);
 }
 
