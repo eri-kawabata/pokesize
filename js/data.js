@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const recordItems = document.getElementById("recordItems");
     const ctx = document.getElementById("recordChart").getContext("2d");
 
-    const records = [];
+    let records = [];
 
     const fetchPokemonData = async () => {
         const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const updateChart = () => {
-        const labels = records.map((_, index) => `記録${index + 1}`);
+        const labels = records.map((record) => record.date);
         const heights = records.map((record) => record.height);
         const weights = records.map((record) => record.weight);
 
@@ -56,8 +56,38 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
+    const saveToLocalStorage = () => {
+        localStorage.setItem("records", JSON.stringify(records));
+    };
+
+    const loadFromLocalStorage = () => {
+        const savedRecords = localStorage.getItem("records");
+        return savedRecords ? JSON.parse(savedRecords) : [];
+    };
+
+    const renderRecordList = () => {
+        recordItems.innerHTML = "";
+        records.forEach(({ height, weight, pokemon, date }) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+                <div>
+                    <img src="${pokemon.image}" alt="${pokemon.name}" class="avatar">
+                    ${pokemon.name} (記録日: ${date})
+                </div>
+                <div>身長: ${height} cm, 体重: ${weight} kg</div>
+            `;
+            recordItems.appendChild(listItem);
+        });
+    };
+
     const initApp = async () => {
         const pokemons = await fetchPokemonData();
+        records = loadFromLocalStorage();
+
+        if (records.length > 0) {
+            renderRecordList();
+            updateChart();
+        }
 
         form.addEventListener("submit", (event) => {
             event.preventDefault();
@@ -68,19 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isNaN(height) || isNaN(weight)) return alert("正しい数値を入力してください。");
 
             const closestPokemon = findClosestPokemon(height, weight, pokemons);
-            records.push({ height, weight, pokemon: closestPokemon });
+            const date = new Date().toLocaleDateString(); // 記録日を取得
+            records.push({ height, weight, pokemon: closestPokemon, date });
 
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `
-                <div>
-                    <img src="${closestPokemon.image}" alt="${closestPokemon.name}" class="avatar">
-                    ${closestPokemon.name}
-                </div>
-                <div>身長: ${height} cm, 体重: ${weight} kg</div>
-            `;
-            recordItems.appendChild(listItem);
-
+            renderRecordList();
             updateChart();
+            saveToLocalStorage();
         });
     };
 
