@@ -24,8 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const choicesContainer = document.getElementById("choices-container");
   const resultDisplay = document.getElementById("result");
   const scoreDisplay = document.getElementById("score");
+  const progressDisplay = document.getElementById("progress");
   const timerDisplay = document.getElementById("timer");
   const nextButton = document.getElementById("next-button");
+  const endScreen = document.getElementById("end-screen");
+  const finalScore = document.getElementById("final-score");
+  const replayButton = document.getElementById("replay-button");
 
   const fetchPokemonData = async (id) => {
     try {
@@ -160,8 +164,14 @@ document.addEventListener("DOMContentLoaded", () => {
     buttons.forEach((button) => (button.disabled = true));
   };
 
+  const updateProgress = () => {
+    progressDisplay.textContent = `問題: ${currentQuestion} / 15`;
+  };
+
   const nextQuestion = async () => {
     currentQuestion++;
+    updateProgress();
+
     if (currentQuestion > 15) {
       endGame();
       return;
@@ -170,9 +180,23 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const endGame = () => {
-    resultDisplay.textContent = `ゲーム終了！ スコア: ${score}`;
-    resultDisplay.style.color = "blue";
+    resultDisplay.textContent = "ゲーム終了！";
+    resultDisplay.style.display = "none";
     nextButton.style.display = "none";
+    endScreen.style.display = "block";
+
+    finalScore.textContent = `あなたのスコア: ${score}`;
+  };
+
+  const resetGame = () => {
+    score = 0;
+    currentQuestion = 0;
+    resultDisplay.style.display = "block";
+    nextButton.style.display = "block";
+    endScreen.style.display = "none";
+    scoreDisplay.textContent = "スコア: 0";
+    updateProgress();
+    startNewQuiz();
   };
 
   const startNewQuiz = async () => {
@@ -185,9 +209,11 @@ document.addEventListener("DOMContentLoaded", () => {
     startTimer();
   };
 
+  replayButton.addEventListener("click", resetGame);
   nextButton.addEventListener("click", startNewQuiz);
   regionSelect.addEventListener("change", startNewQuiz);
   languageSelect.addEventListener("change", startNewQuiz);
 
+  updateProgress();
   startNewQuiz();
 });

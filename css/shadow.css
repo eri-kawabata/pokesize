@@ -194,3 +194,34 @@ body {
     background: linear-gradient(135deg, #58d68d, #2eae60);
     transform: scale(1.05);
 }
+
+#progress {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+}
+
+#end-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#replay-button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#replay-button:hover {
+    background: linear-gradient(135deg, #4aa3e6, #2a85c9);
+    transform: scale(1.05);
+}
