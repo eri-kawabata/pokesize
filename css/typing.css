@@ -2,8 +2,8 @@
 .menu-btn {
     font-size: 20px;
     padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: rgb(80, 165, 255);
+    background-color: rgba(255, 255, 255, 0.9);/* 半透明の白背景 */
+    color: rgb(80, 165, 255);/* 青文字 */
     border: none;
     cursor: pointer;
     position: fixed;
@@ -13,7 +13,6 @@
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 .menu-btn:hover {
     background-color: #ffffff;
     color: rgb(255, 80, 80);
@@ -114,18 +113,54 @@ body {
     padding: 20px;
 }
 
-/* モード選択 */
+/* モード選択エリア */
 #mode-selection {
     margin-bottom: 20px;
     display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    /* ボタン間の間隔 */
 }
 
+/* ラジオボタンの非表示 */
+#mode-selection input[type="radio"] {
+    display: none;
+}
+
+/* ラベルをボタン風にする */
 #mode-selection label {
     font-size: 16px;
     font-weight: bold;
-    color: #000000;
+    padding: 10px 20px;
+    border: 2px solid #3498db;
+    /* 青系の枠線 */
+    border-radius: 5px;
+    background: #ffffff;
+    /* 白背景 */
+    color: #3498db;
+    /* 青文字 */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* ホバー時のスタイル */
+#mode-selection label:hover {
+    background: #3498db;
+    /* 青背景 */
+    color: #ffffff;
+    /* 白文字 */
+}
+
+/* 選択されたモードのスタイル */
+#mode-selection input[type="radio"]:checked+label {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    /* 青グラデーション */
+    color: #ffffff;
+    /* 白文字 */
+    border-color: #2980b9;
+    /* 濃い青枠線 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* 影をつける */
 }
 
 /* ゲームエリア */
@@ -190,23 +225,24 @@ input:focus {
     color: #ff3b3b;
 }
 
-/* ボタン */
-button {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    color: #fff;
+/* スタートボタン */
+#start-button {
+    background: linear-gradient(135deg, #3498db, #2980b9);/* 青のグラデーション */
+    color: #fff;/* 白文字 */
     font-size: 16px;
+    padding: 12px 20px;
     border: none;
     border-radius: 5px;
-    padding: 12px 20px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, background-color 0.3s ease;
     margin: 10px;
 }
 
-button:hover {
-    background: linear-gradient(135deg, #4aa3e6, #2a85c9);
-    transform: scale(1.05);
+/* スタートボタン ホバー時 */
+#start-button:hover {
+    background: linear-gradient(135deg, #4aa3e6, #2a85c9);/* 薄い青のグラデーション */
+    transform: scale(1.05);/* 拡大効果 */
 }
 
 /* ランキングエリア */
