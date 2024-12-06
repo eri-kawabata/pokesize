@@ -293,6 +293,43 @@ body {
     justify-content: center;
 }
 
+/* スタートボタンのデザイン */
+#start-button {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    /* 緑のグラデーション */
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    /* テキストを大文字にする */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+    /* 少し間隔を追加 */
+}
+
+/* ホバー時の効果 */
+#start-button:hover {
+    background: linear-gradient(135deg, #66BB6A, #388E3C);
+    /* 明るい緑 */
+    transform: scale(1.05);
+    /* 拡大 */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 押下時の効果 */
+#start-button:active {
+    background: linear-gradient(135deg, #388E3C, #2E7D32);
+    /* 暗い緑 */
+    transform: scale(0.98);
+    /* 縮小 */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
 #replay-button {
     background: linear-gradient(135deg, #3498db, #2980b9);
     color: #fff;
