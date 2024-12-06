@@ -4,13 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ポケモンのシルエットクイズ</title>
+    <title>ポケモンシルエットクイズ</title>
     <link rel="stylesheet" href="./css/shadow.css">
 </head>
 
 <body>
+        <!-- メニューボタン -->
+        <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+
+        <!-- サイドメニュー -->
+        <div class="side-menu" id="sideMenu">
+            <button class="close-btn" onclick="toggleMenu()"></button>
+            <a href="./index.html" class="menu-item">
+                <i class="fas fa-cog"></i> ポケサイズ</a>
+            <a href="./data.html" class="menu-item">
+                <i class="fas fa-calendar-alt"></i> 記録</a>
+            <a href="./shadow.html" class="menu-item">
+                <i class="fas fa-user"></i> シルエットクイズ</a>
+            <a href="./typing.html" class="menu-item">
+                <i class="fas fa-sign-in-alt"></i>タイピングチャレンジ</a>
+        </div>
+
     <div id="app">
-        <h1>ポケモンのシルエットクイズ</h1>
+        <h1>ポケモンシルエットクイズ</h1>
 <div id="controls">
     <div class="control-group">
         <label for="region-select">地方を選んでください:</label>

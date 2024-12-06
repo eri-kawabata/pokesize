@@ -1,3 +1,8 @@
+function toggleMenu() {
+    const sideMenu = document.getElementById("sideMenu");
+    sideMenu.classList.toggle("open"); // メニューの開閉を切り替え
+}
+
 // 初期設定
 let score = 0;
 let highScore = localStorage.getItem("highScore") || 0;

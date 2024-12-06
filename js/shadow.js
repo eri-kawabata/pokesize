@@ -1,3 +1,8 @@
+function toggleMenu() {
+    const sideMenu = document.getElementById("sideMenu");
+    sideMenu.classList.toggle("open"); // メニューの開閉を切り替え
+}
+
 const API_URL = "https://pokeapi.co/api/v2/";
 const regions = {
   all: { min: 1, max: 1010 },

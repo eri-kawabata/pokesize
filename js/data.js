@@ -1,3 +1,8 @@
+function toggleMenu() {
+    const sideMenu = document.getElementById("sideMenu");
+    sideMenu.classList.toggle("open"); // メニューの開閉を切り替え
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("recordForm");
     const recordItems = document.getElementById("recordItems");
