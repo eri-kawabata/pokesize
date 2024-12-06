@@ -111,22 +111,28 @@ body {
 }
 
 h1 {
-    font-size: 2em;
-        font-weight: bold;
-        text-align: center;
-        color: #333;
-        margin-bottom: 15px;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin: 10px auto;
+    /* 中央揃え */
+    max-width: 80%;
+    /* 最大幅を設定 */
+    line-height: 1.4;
+    /* 行間の調整で可読性向上 */
 }
 
 p {
     font-size: 1.1em;
     text-align: center;
-    color: #555;
-    margin-bottom: 20px;
+    color: #313131;
+    margin: 10px auto;
+    /* 中央揃え */
+    max-width: 70%;
+    /* 最大幅を狭く設定 */
     line-height: 1.6;
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    /* 行間を広げて読みやすさを向上 */
 }
 
 /* フォーム */
