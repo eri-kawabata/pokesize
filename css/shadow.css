@@ -1,7 +1,7 @@
 /* メニューボタン */
 .menu-btn {
-    font-size: 20px;
-    padding: 10px 20px;
+    font-size: 18px;
+    padding: 8px 16px;
     background-color: rgba(255, 255, 255, 0.9);
     color: rgb(80, 165, 255);
     border: none;
@@ -22,9 +22,9 @@
 /* サイドメニュー */
 .side-menu {
     position: fixed;
-    left: -230px;
+    left: -250px;
     top: 0;
-    width: 230px;
+    width: 250px;
     height: 100%;
     background-color: rgba(51, 51, 51, 0.8);
     color: white;
@@ -35,48 +35,34 @@
     border-right: 2px solid rgba(0, 0, 0, 0.5);
 }
 
-/* サイドメニューが表示されるとき */
 .side-menu.open {
     left: 0;
-    /* 左端にスライドインさせる */
 }
 
-/* メニューを閉じるボタン */
 .close-btn {
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     background: none;
-    /* 背景色をなくす */
     border: none;
-    /* ボタンの枠線を消す */
     cursor: pointer;
-    /* マウスを乗せると指の形になる */
     margin-left: 10px;
     display: block;
-    /* ブロック要素として表示 */
 }
 
-/* メニュー項目のスタイル */
 .menu-item {
     display: flex;
-    /* アイコンとテキストを横並びにする */
     align-items: center;
-    /* アイコンとテキストを縦方向に中央揃え */
     padding: 15px;
     color: white;
     text-decoration: none;
-    /* リンクの下線をなくす */
-    font-size: 18px;
+    font-size: 16px;
     transition: background 0.3s;
-    /* 背景色が0.3秒で変わるようにする */
 }
 
-/* メニュー項目のホバー時のスタイル */
 .menu-item:hover {
     background-color: #555;
 }
 
-/* メニュー項目内のアイコンのスタイル */
 .menu-item i {
     margin-right: 10px;
     font-size: 20px;
@@ -86,108 +72,98 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #ff3b3b;
-    /* モンスターボールの赤 */
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     color: #333;
 }
 
 #app {
     background-color: #ffffff;
-    /* モンスターボールの白 */
     border: 5px solid #000000;
-    /* モンスターボールの黒いライン */
     border-radius: 15px;
-    width: 600px;
-    min-height: 500px;
-    /* 最小高さを設定 */
+    width: 100%;
+    max-width: 700px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    /* 上詰め */
+    margin: 20px auto;
+    padding: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    overflow: visible;
+}
+
+/* タイトル */
+h1 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 22px;
 }
 
 /* コントロールエリア */
 #controls {
     display: flex;
-    justify-content: center;
-    /* 中央揃え */
+    justify-content: space-between;
     align-items: center;
-    /* 縦方向中央揃え */
-    gap: 40px;
-    /* 地方と言語選択の間のスペース */
-    margin-bottom: 20px;
+    gap: 20px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
-/* 各選択グループ */
 .control-group {
     display: flex;
     flex-direction: column;
-    /* ラベルとセレクトボックスを縦に並べる */
     align-items: center;
-    /* 中央揃え */
     text-align: center;
+    width: 45%;
 }
 
 .control-group label {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #000000;
     margin-bottom: 5px;
-    /* ラベルとセレクトボックスの間隔 */
 }
 
 .control-group select {
-    padding: 8px;
+    padding: 6px;
     border: 2px solid #CCCCCC;
     border-radius: 5px;
-    width: 150px;
+    width: 100%;
+    max-width: 200px;
     text-align: center;
     transition: border-color 0.3s ease;
 }
 
 .control-group select:focus {
     border-color: #FF0000;
-    /* モンスターボールの赤 */
-}
-
-/* 各選択エリアのラッパー */
-.control-group {
-    display: flex;
-    align-items: center;
-    /* ラベルとセレクトボックスを中央揃え */
-    gap: 10px;
-    /* ラベルとセレクトボックスの間隔 */
 }
 
 /* タイマー */
 #timer-container {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
     color: #000;
+    text-align: center;
 }
 
 /* ポケモン画像エリア */
 #image-container {
     margin: 20px auto;
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #fff;
     border: 3px solid #000000;
     border-radius: 50%;
-    /* モンスターボール風の円形 */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -195,7 +171,6 @@ body {
     max-width: 100%;
     max-height: 100%;
     filter: contrast(0) grayscale(1);
-    /* シルエット */
 }
 
 /* 選択肢 */
@@ -203,22 +178,20 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
-    margin: 20px 0;
+    gap: 10px;
+    margin: 15px 0;
 }
 
 .choice-button {
     background: linear-gradient(135deg, #3498db, #2980b9);
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 8px 15px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, background-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
 .choice-button:hover {
@@ -228,50 +201,41 @@ body {
 
 /* 時間切れメッセージ */
 #result {
-    font-size: 24px;
-    /* 視認性の高いサイズ */
+    font-size: 18px;
     font-weight: bold;
     color: red;
-    /* 時間切れを視覚的に強調 */
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: center;
-    /* 中央揃え */
-    animation: fadeIn 0.5s ease;
-    /* 視覚的なエフェクト */
-}
-
-/* アニメーション（オプション） */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
 }
 
 /* スコア表示 */
 #score {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px;
     color: #000;
+    text-align: center;
+}
+
+#progress {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+    text-align: center;
 }
 
 #pause-button {
     background: linear-gradient(135deg, #f39c12, #e67e22);
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 8px 15px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, background-color 0.3s ease;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 #pause-button:hover {
@@ -279,70 +243,69 @@ body {
     transform: scale(1.05);
 }
 
-#progress {
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-    margin-top: 10px;
-}
-
-#end-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* スタートボタンのデザイン */
+/* スタートボタン */
 #start-button {
     background: linear-gradient(135deg, #4CAF50, #2E7D32);
-    /* 緑のグラデーション */
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     border: none;
     border-radius: 8px;
-    padding: 15px 30px;
+    padding: 12px 25px;
     cursor: pointer;
     text-transform: uppercase;
-    /* テキストを大文字にする */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 20px;
-    /* 少し間隔を追加 */
+    margin-top: 15px;
 }
 
-/* ホバー時の効果 */
 #start-button:hover {
     background: linear-gradient(135deg, #66BB6A, #388E3C);
-    /* 明るい緑 */
     transform: scale(1.05);
-    /* 拡大 */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* 押下時の効果 */
-#start-button:active {
-    background: linear-gradient(135deg, #388E3C, #2E7D32);
-    /* 暗い緑 */
-    transform: scale(0.98);
-    /* 縮小 */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 #replay-button {
     background: linear-gradient(135deg, #3498db, #2980b9);
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 8px 15px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-top: 15px;
 }
 
 #replay-button:hover {
     background: linear-gradient(135deg, #4aa3e6, #2a85c9);
     transform: scale(1.05);
+}
+
+/* メディアクエリ */
+@media (max-width: 768px) {
+    #app {
+        width: 95%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    #image-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .choice-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    #timer-container,
+    #score,
+    #progress {
+        font-size: 14px;
+    }
 }
