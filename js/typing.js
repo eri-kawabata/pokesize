@@ -10,6 +10,8 @@ let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
 let currentPokemon = "";
 let timeRemaining = 60;
 let mode = "english"; // デフォルトモードは英語
+let isPaused = false; // 一時停止状態を管理
+let timerInterval = null; // タイマーのIDを管理
 
 // DOM要素
 const pokemonDisplay = document.getElementById("pokemon-display");
@@ -23,6 +25,7 @@ const gameArea = document.getElementById("game-area");
 const modeSelection = document.getElementById("mode-selection");
 const rankingArea = document.getElementById("ranking-area");
 const rankingList = document.getElementById("ranking-list");
+const pauseButton = document.getElementById("pause-button"); // HTML内の一時停止ボタンを取得
 const replayButton = document.createElement("button"); // リプレイボタンを生成
 
 // リプレイボタンの設定
@@ -122,6 +125,7 @@ function endGame() {
     typingInput.disabled = true;
     pokemonDisplay.innerText = "ゲーム終了!";
     pokemonImage.src = "";
+    clearInterval(timerInterval); // タイマーをクリア
     if (score > highScore) {
         localStorage.setItem("highScore", score);
         highScoreDisplay.innerText = score;
@@ -134,16 +138,19 @@ function endGame() {
     gameArea.classList.add("hidden");
     rankingArea.classList.remove("hidden");
     replayButton.classList.remove("hidden"); // リプレイボタンを表示
+    pauseButton.classList.add("hidden"); // 一時停止ボタンを非表示
 }
 
 // タイマーを開始
 function startTimer() {
-    const timerInterval = setInterval(() => {
-        timeRemaining--;
-        timerDisplay.innerText = timeRemaining;
-        if (timeRemaining <= 0) {
-            clearInterval(timerInterval);
-            endGame();
+    timerInterval = setInterval(() => {
+        if (!isPaused) { // 一時停止中でない場合のみタイマーを動かす
+            timeRemaining--;
+            timerDisplay.innerText = timeRemaining;
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+                endGame();
+            }
         }
     }, 1000);
 }
@@ -152,6 +159,7 @@ function startTimer() {
 function startGame() {
     score = 0;
     timeRemaining = 60;
+    isPaused = false;
     typingInput.disabled = false;
     typingInput.value = "";
     scoreDisplay.innerText = score;
@@ -159,6 +167,7 @@ function startGame() {
     gameArea.classList.remove("hidden");
     rankingArea.classList.add("hidden");
     replayButton.classList.add("hidden"); // リプレイボタンを非表示
+    pauseButton.classList.remove("hidden"); // 一時停止ボタンを表示
     showNextPokemon();
     startTimer();
 }
@@ -191,6 +200,16 @@ typingInput.addEventListener("input", function () {
 
 // リプレイボタンのクリックイベント
 replayButton.addEventListener("click", startGame);
+
+// 一時停止ボタンのクリックイベント
+pauseButton.addEventListener("click", () => {
+    isPaused = !isPaused; // 状態を切り替える
+    if (isPaused) {
+        pauseButton.innerText = "再開"; // ボタンのテキストを更新
+    } else {
+        pauseButton.innerText = "一時停止";
+    }
+});
 
 // 初回ランキング表示
 displayRanking();

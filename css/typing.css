@@ -2,8 +2,8 @@
 .menu-btn {
     font-size: 20px;
     padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.9);/* 半透明の白背景 */
-    color: rgb(80, 165, 255);/* 青文字 */
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgb(80, 165, 255);
     border: none;
     cursor: pointer;
     position: fixed;
@@ -13,6 +13,7 @@
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .menu-btn:hover {
     background-color: #ffffff;
     color: rgb(255, 80, 80);
@@ -34,48 +35,34 @@
     border-right: 2px solid rgba(0, 0, 0, 0.5);
 }
 
-/* サイドメニューが表示されるとき */
 .side-menu.open {
     left: 0;
-    /* 左端にスライドインさせる */
 }
 
-/* メニューを閉じるボタン */
 .close-btn {
     font-size: 20px;
     color: white;
     background: none;
-    /* 背景色をなくす */
     border: none;
-    /* ボタンの枠線を消す */
     cursor: pointer;
-    /* マウスを乗せると指の形になる */
     margin-left: 10px;
     display: block;
-    /* ブロック要素として表示 */
 }
 
-/* メニュー項目のスタイル */
 .menu-item {
     display: flex;
-    /* アイコンとテキストを横並びにする */
     align-items: center;
-    /* アイコンとテキストを縦方向に中央揃え */
     padding: 15px;
     color: white;
     text-decoration: none;
-    /* リンクの下線をなくす */
     font-size: 18px;
     transition: background 0.3s;
-    /* 背景色が0.3秒で変わるようにする */
 }
 
-/* メニュー項目のホバー時のスタイル */
 .menu-item:hover {
     background-color: #555;
 }
 
-/* メニュー項目内のアイコンのスタイル */
 .menu-item i {
     margin-right: 10px;
     font-size: 20px;
@@ -85,7 +72,6 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #ff3b3b;
-    /* モンスターボールの赤 */
     margin: 0;
     padding: 0;
     display: flex;
@@ -97,9 +83,7 @@ body {
 
 .container {
     background-color: #ffffff;
-    /* モンスターボールの白 */
     border: 5px solid #000000;
-    /* モンスターボールの黒いライン */
     border-radius: 15px;
     width: 90%;
     max-width: 600px;
@@ -108,9 +92,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* スペースを均等に分ける */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
+    text-align: center;
 }
 
 /* モード選択エリア */
@@ -119,48 +103,34 @@ body {
     display: flex;
     justify-content: center;
     gap: 10px;
-    /* ボタン間の間隔 */
 }
 
-/* ラジオボタンの非表示 */
 #mode-selection input[type="radio"] {
     display: none;
 }
 
-/* ラベルをボタン風にする */
 #mode-selection label {
     font-size: 16px;
     font-weight: bold;
     padding: 10px 20px;
     border: 2px solid #3498db;
-    /* 青系の枠線 */
     border-radius: 5px;
     background: #ffffff;
-    /* 白背景 */
     color: #3498db;
-    /* 青文字 */
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-/* 選択中のスタイル */
 #mode-selection label.selected {
     background: linear-gradient(135deg, #3498db, #2980b9);
-    /* 青のグラデーション */
     color: #ffffff;
-    /* 白文字 */
     border-color: #2980b9;
-    /* 濃い青枠線 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    /* 影をつける */
 }
 
-/* ホバー時のスタイル（未選択の場合のみ） */
 #mode-selection label:not(.selected):hover {
     background: #3498db;
-    /* 青背景 */
     color: #ffffff;
-    /* 白文字 */
 }
 
 /* ゲームエリア */
@@ -175,16 +145,15 @@ body {
 
 .pokemon-image {
     margin: 20px auto;
-        width: 200px;
-        height: 200px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #fff;
-        border: 3px solid #000000;
-        border-radius: 50%;
-        /* モンスターボール風の円形 */
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 3px solid #000000;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 #pokemon-display {
@@ -227,8 +196,8 @@ input:focus {
 
 /* スタートボタン */
 #start-button {
-    background: linear-gradient(135deg, #3498db, #2980b9);/* 青のグラデーション */
-    color: #fff;/* 白文字 */
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff;
     font-size: 16px;
     padding: 12px 20px;
     border: none;
@@ -239,10 +208,29 @@ input:focus {
     margin: 10px;
 }
 
-/* スタートボタン ホバー時 */
 #start-button:hover {
-    background: linear-gradient(135deg, #4aa3e6, #2a85c9);/* 薄い青のグラデーション */
-    transform: scale(1.05);/* 拡大効果 */
+    background: linear-gradient(135deg, #4aa3e6, #2a85c9);
+    transform: scale(1.05);
+}
+
+/* 一時停止ボタン */
+#pause-button {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-top: 20px;
+    align-self: center;
+}
+
+#pause-button:hover {
+    background: linear-gradient(135deg, #f7b731, #d35400);
+    transform: scale(1.05);
 }
 
 /* ランキングエリア */
@@ -276,14 +264,7 @@ ol li {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* フッターのメッセージ */
-footer {
-    font-size: 14px;
-    margin-top: 10px;
-    color: #000000;
-    text-align: center;
-}
-
+/* リプレイボタン */
 #replay-button {
     background: linear-gradient(135deg, #f39c12, #e67e22);
     color: #fff;
