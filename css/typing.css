@@ -143,24 +143,24 @@ body {
     transition: all 0.3s ease;
 }
 
-/* ホバー時のスタイル */
-#mode-selection label:hover {
-    background: #3498db;
-    /* 青背景 */
-    color: #ffffff;
-    /* 白文字 */
-}
-
-/* 選択されたモードのスタイル */
-#mode-selection input[type="radio"]:checked+label {
+/* 選択中のスタイル */
+#mode-selection label.selected {
     background: linear-gradient(135deg, #3498db, #2980b9);
-    /* 青グラデーション */
+    /* 青のグラデーション */
     color: #ffffff;
     /* 白文字 */
     border-color: #2980b9;
     /* 濃い青枠線 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     /* 影をつける */
+}
+
+/* ホバー時のスタイル（未選択の場合のみ） */
+#mode-selection label:not(.selected):hover {
+    background: #3498db;
+    /* 青背景 */
+    color: #ffffff;
+    /* 白文字 */
 }
 
 /* ゲームエリア */

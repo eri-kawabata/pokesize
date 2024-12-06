@@ -34,9 +34,26 @@ rankingArea.appendChild(replayButton); // ランキングエリアに追加
 // ハイスコアの表示
 highScoreDisplay.innerText = highScore;
 
+// モード切り替えのラベル更新
+function updateModeSelection() {
+    const labels = document.querySelectorAll("#mode-selection label");
+    labels.forEach((label) => {
+        const input = label.querySelector("input");
+        if (input.checked) {
+            label.classList.add("selected"); // 選択中のラベルにクラスを付加
+        } else {
+            label.classList.remove("selected"); // 他のラベルのクラスを削除
+        }
+    });
+}
+
+// 初回ロード時に状態を設定
+updateModeSelection();
+
 // モード切り替え
 modeSelection.addEventListener("change", (e) => {
-    mode = e.target.value;
+    mode = e.target.value; // 選択されたモードを更新
+    updateModeSelection(); // ラベルの選択状態を更新
 });
 
 // ひらがなをカタカナに変換する関数
@@ -53,7 +70,7 @@ async function fetchPokemon() {
     if (response.ok) {
         const data = await response.json();
         const pokemonImageURL = data.sprites.front_default; // 表示画像
-        
+
         if (mode === "japanese") {
             // 日本語名を取得するために追加リクエスト
             const speciesResponse = await fetch(data.species.url);
@@ -64,7 +81,7 @@ async function fetchPokemon() {
                 return { name: pokemonName, image: pokemonImageURL };
             }
         }
-        
+
         // 英語モードまたは日本語名取得失敗時
         const pokemonName = data.name;
         return { name: pokemonName, image: pokemonImageURL };
